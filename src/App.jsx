@@ -1,20 +1,27 @@
-import Cabecalho from "./componentes/Cabecalho";
-import BemVindo from "./componentes/BemVindo";
-import Footer from "./componentes/Footer";
+import { Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import PaginaInicio from './pages/PaginaInicio'
+import PaginaHabitos from './pages/PaginaHabitos'
+import PaginaDetalhes from './pages/PaginaDetalhes'
+import PaginaNaoEncontrada from './pages/PaginaNaoEncontrada'
 import './App.css'
-
-// E usa ele dentro do App:
 
 function App() {
   return (
     <div>
-      <Cabecalho
-    
-      />
-      <BemVindo nomeUsuario="turma iteam" totalHabitos={5} />
+      <Header />
+
+      <Routes>
+        <Route path="/"            element={<PaginaInicio />} />
+        <Route path="/habitos"     element={<PaginaHabitos />} />
+        <Route path="/habito/:id"  element={<PaginaDetalhes />} />
+        <Route path="*"            element={<PaginaNaoEncontrada />} />
+      </Routes>
+
       <Footer />
     </div>
-  );
+  )
 }
 
 export default App
